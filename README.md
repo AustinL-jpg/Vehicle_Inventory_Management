@@ -1,9 +1,3 @@
 # Project_3
 
-original column descriptions:
-
-https://www.fueleconomy.gov/feg/ws/
-
-Abbreviations Definitions:
-
-https://www.epa.gov/sites/default/files/2016-10/readme.txt
+To create the Flask App is important to set the html document into a folder with the name Templates

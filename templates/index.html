@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Car Miles</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 p-5 text-center bg-light">
+            <h1>Vehicle Inventory Management Dashboard</h1>
+            <p>Utilize this application to assist with your invenotry as well as a resource to help with sales!</p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card card-body bg-light">
+              <h6>Make:</h6>
+              <select id="select" onchange="optionChanged(this.value)"></select>
+            </div>
+            <br>
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4 class="card-title">Demographic Info</h4>
+              </div>
+              <div id="select" class="card-body"></div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div id="bar"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="bubble"></div>
+          </div>
+        </div>
+      </div>
+
+    <h1>TEEST HELLO</h1>
+    
+    <div id="plot"></div>
+    <script src="static/js/plots.js"></script>
+
+
+
+
+
+</body>
+</html>
