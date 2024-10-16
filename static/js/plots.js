@@ -2,6 +2,7 @@
 
 d3.json("api/data").then((importedData) => {
 
+<<<<<<< HEAD
   const carData = importedData;
 
   console.log(carData);
@@ -112,3 +113,11 @@ document.body.appendChild(dropdown);
 
 
 // // init();
+=======
+  let data = importedData;
+
+  console.log(data);
+
+
+});
+>>>>>>> dce9635f1c9d5713906f8095f35a39fc623c141a

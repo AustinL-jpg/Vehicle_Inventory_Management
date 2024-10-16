@@ -38,8 +38,13 @@ def home():
 @app.route('/api/data')
 def get_data():
     # Convert DataFrame to JSON
+<<<<<<< HEAD
     query = {}
     fields = {'make': 1, 'model': 1,  'year': 1, 'VIN': 1, '_id': 0}
+=======
+    query = {'id': 28191}
+    fields = {'VIN': 1, 'make': 1, '_id': 0}
+>>>>>>> dce9635f1c9d5713906f8095f35a39fc623c141a
     inventory_data = db.car_inventory.find(query, fields)
     #print(inventory_data)
     data_list = [item for item in inventory_data]
