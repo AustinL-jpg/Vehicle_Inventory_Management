@@ -45,6 +45,12 @@ Pie chart:
 Showing the stock of used vs new vehicles in the inventory. 
 ![image](https://github.com/user-attachments/assets/7e3cc0ee-83e0-4f9e-af6d-567f56ff709b)
 
+Bar graph: 
+
+Showing the total stock of that make and model in the inventory.
+![image](https://github.com/user-attachments/assets/0628dc03-8552-402d-9fb8-6fee0d3c67f4)
+
+
 **Vehicle Information**
 
 Upon selecting a vehicles make, model, and year the information on the vehicles will show. 
