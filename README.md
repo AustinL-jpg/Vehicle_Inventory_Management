@@ -29,6 +29,7 @@ Three dropdowns are in place where users can select the Make, Model, and year fo
 ![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
 
 **Dynamic Graphs**
+
 With the selection of make, model, and year the graphs will change showing the current model vs. the current inventory, make vs percentage of inventory, 
 
 Line graph showing how the mpg has changed over the years based on the make, model, and year will display. 
