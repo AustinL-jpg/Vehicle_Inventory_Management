@@ -38,13 +38,8 @@ def home():
 @app.route('/api/data')
 def get_data():
     # Convert DataFrame to JSON
-<<<<<<< HEAD
     query = {}
-    fields = {'make': 1, 'model': 1,  'year': 1, 'VIN': 1, '_id': 0}
-=======
-    query = {'id': 28191}
-    fields = {'VIN': 1, 'make': 1, '_id': 0}
->>>>>>> dce9635f1c9d5713906f8095f35a39fc623c141a
+    fields = {'_id': 0, 'make': 1, 'model': 1,  'year': 1}
     inventory_data = db.car_inventory.find(query, fields)
     #print(inventory_data)
     data_list = [item for item in inventory_data]
@@ -53,6 +48,56 @@ def get_data():
   
 
     return jsonify(data_list)
+
+
+# @app.route('/api/data', methods=['POST'])
+# def update_dashboard():
+#     choice = request.form.get('select')
+#     # Do something with the choice (e.g., update database, render a different template)
+#     return jsonify({'message': 'Dashboard updated successfully'})
+
+# @app.route(f'/api/data{Ford}')
+# def get_data():
+#     # Convert DataFrame to JSON
+#     query = {'make': {Ford}}
+#     fields = {'model': 1,  'year': 1}
+#     inventory_data = db.car_inventory.find(query, fields)
+#     #print(inventory_data)
+#     data_list = [item for item in inventory_data]
+#     print(data_list)
+
+  
+
+#     return jsonify(data_list)
+
+
+# @app.route(f'/api/data{model}')
+# def get_data():
+#     # Convert DataFrame to JSON
+#     query = {'make': {model}}
+#     fields = {'year': 1}
+#     inventory_data = db.car_inventory.find(query, fields)
+#     #print(inventory_data)
+#     data_list = [item for item in inventory_data]
+#     print(data_list)
+
+  
+
+#     return jsonify(data_list)
+
+# @app.route(f'/api/data{year}')
+# def get_data():
+#     # Convert DataFrame to JSON
+#     query = {'make': {year}}
+#     fields = {}
+#     inventory_data = db.car_inventory.find(query, fields)
+#     #print(inventory_data)
+#     data_list = [item for item in inventory_data]
+#     print(data_list)
+
+  
+
+#     return jsonify(data_list)
 
 if __name__ == '__main__':
     app.run(debug=True)

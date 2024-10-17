@@ -2,30 +2,28 @@
 
 d3.json("api/data").then((importedData) => {
 
-<<<<<<< HEAD
   const carData = importedData;
+  const carModel = importedData
 
   console.log(carData);
 
 
-  let car = carData[0]
-  console.log(car)
+  // let car = carData[0]
+  // console.log(car)
 
-  let carMake = car.make
-  console.log(carMake)
+  // let carMake = car.make
+  // console.log(carMake)
 
 
   function createDropdown(carData, key) {
     const uniqueValues = new Set();
-    const select = document.createElement('select');
-
-  // function createDropdown(carData) {
-  //   const select = document.createElement("select");
+    const firstDropdown = document.createElement('select');
+    const secondDropdown = document.getElementById("secondDropdown");
 
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
-    defaultOption.text = "Select the Make";
-    select.appendChild(defaultOption);
+    defaultOption.text = "None";
+    firstDropdown.appendChild(defaultOption);
 
 
 
@@ -38,19 +36,54 @@ d3.json("api/data").then((importedData) => {
         const option = document.createElement("option");
         option.value = item.make;
         option.text = item.make;
-        select.appendChild(option);
+        firstDropdown.appendChild(option);
       }
     });
 
-    return select;
+    return firstDropdown;
 
   }
 
 const dropdown = createDropdown(carData);
 document.body.appendChild(dropdown);
+
+// Function to populate the second dropdown
+function populateSecondDropdown() {
+  const selectedValue = firstDropdown.value;
+  const options = data[selectedValue];
+
+  // Clear the existing options in the second dropdown
+  secondDropdown.innerHTML = '';
+
+  // Add new options based on the selected value
+  options.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.text = option;
+    secondDropdown.appendChild(optionElement);
+  });
+}
+
+// Add an event listener to the first dropdown to trigger population
+firstDropdown.addEventListener('change', populateSecondDropdown);
 })
 
 
+
+// function addOption(){
+// 	var select = document.getElementById("dynamic-select");
+// 	select.options[select.options.length] = new Option('New Element', '0');
+// }
+
+// function removeOption(){
+// 	var select = document.getElementById("dynamic-select");
+// 	select.options[select.options.length - 1] = null;
+// }
+
+// function removeAllOptions(){
+// 	var select = document.getElementById("dynamic-select");
+// 	select.options.length = 0;
+// }
 
 // const yearSelect = document.getElementById('year');
 // const makeSelect = document.getElementById('make');
@@ -113,11 +146,3 @@ document.body.appendChild(dropdown);
 
 
 // // init();
-=======
-  let data = importedData;
-
-  console.log(data);
-
-
-});
->>>>>>> dce9635f1c9d5713906f8095f35a39fc623c141a
