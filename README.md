@@ -26,6 +26,7 @@ There were 3 main resources we used to develop our dashboard to make it function
 **Interactive dropdowns for user selection**
 
 Three dropdowns are in place where users can select the Make, Model, and year for each vehicle in their inventory. 
+Additionally once the make is selected the dropdowns will automatically filter to only show the models made by that manufacturer and only the years that are available. 
 ![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
 
 **Dynamic Graphs**
