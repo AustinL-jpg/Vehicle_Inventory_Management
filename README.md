@@ -36,7 +36,8 @@ This dashboard is only functional when hosted localy on a computer using the fla
   4. With live server open the HTML from vscode, or after running the flask locate the server link and copy it into a browser.
   5. With the dashboard up the dropdown menus will be active and the graphs will be dynamicly changing with the selected vehicle.
 
-
+Features for Future Updates.
+  Addition of prices to show the estimated sales prices for each vehicle. 
 
 
 
