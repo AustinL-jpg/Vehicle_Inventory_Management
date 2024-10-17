@@ -3,7 +3,7 @@
 **Project Description:**
 
 The new age of technology is here and with the increase in demand for the used and new car market it is hard for dealerships to keep their customers satisfied. With issues such as supply chain delays, digital transformation and online compention, and inefficient dealership processes. To combat these issues our dashboard was created to help dealerships organize their inventory and stay on top of the stock of each of the vehicles, in turn allowing for more efficient processes, increases in the supply chain, and adapting to the digital transformation. 
-![image](https://github.com/user-attachments/assets/ca1045a2-c0e1-4a09-b4a4-fd3519ea39f4)
+![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
 
 
 **Dataset used:**
@@ -30,7 +30,8 @@ Three dropdowns:
 
 In place where users can select the Make, Model, and year for each vehicle in their inventory. 
 Additionally once the make is selected the dropdowns will automatically filter to only show the models made by that manufacturer and only the years that are available. 
-![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
+![image](https://github.com/user-attachments/assets/0f155a0e-6eec-4413-a12a-9d077e4d1822)
+
 
 **Dynamic Graphs**
 
