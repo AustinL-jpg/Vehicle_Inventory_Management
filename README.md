@@ -23,17 +23,17 @@ There were 3 main resources we used to develop our dashboard to make it function
 
 # Dashboard Features: 
 
-"Interactive dropdowns for user selection."
+**Interactive dropdowns for user selection**
 
 Three dropdowns are in place where users can select the Make, Model, and year for each vehicle in their inventory. 
 ![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
 
-"Interactive Line Graphs."
+**Interactive Line Graphs**
 
 Line graph showing how the mpg has changed over the years based on the make, model, and year will display. 
 ![proejct 3 graph](https://github.com/user-attachments/assets/c1a26433-843e-4d3e-8ba7-f4c85d4d530d)
 
-"Vehicle Information."
+**Vehicle Information**
 
 Upon selecting a vehicles make, model, and year the information on the vehicles will show. 
 ![image](https://github.com/user-attachments/assets/b641739f-5ccf-4671-b149-fdfda2561b33)
