@@ -38,8 +38,10 @@ This dashboard is only functional when hosted localy on a computer using the fla
   5. With the dashboard up the dropdown menus will be active and the graphs will be dynamicly changing with the selected vehicle.
 
 Features for Future Updates.
-  Addition of prices to show the estimated sales prices for each vehicle. 
 
+  - Addition of prices to show the estimated sales prices for each vehicle. 
+  - API for images of each vehicle so when the user selects a make model and year it shows a picture along with the information about the car. 
+  
 
 
 
