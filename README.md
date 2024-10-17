@@ -40,12 +40,14 @@ With the selection of make, model, and year the graphs will change showing the c
 Line graph:
 
 Showing how the mpg has changed over the years based on the make, model, and year will display. 
-![proejct 3 graph](https://github.com/user-attachments/assets/c1a26433-843e-4d3e-8ba7-f4c85d4d530d)
+![image](https://github.com/user-attachments/assets/e5ae4cea-7872-422b-9bf8-726a17838a16)
+
 
 Pie chart:
 
 Showing the stock of used vs new vehicles in the inventory. 
-![image](https://github.com/user-attachments/assets/7e3cc0ee-83e0-4f9e-af6d-567f56ff709b)
+![image](https://github.com/user-attachments/assets/9847b50a-3cb4-4d86-b294-44c093b4b6c5)
+
 
 Bar graph: 
 
