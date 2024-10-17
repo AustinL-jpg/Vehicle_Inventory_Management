@@ -3,7 +3,8 @@
 **Project Description:**
 
 The new age of technology is here and with the increase in demand for the used and new car market it is hard for dealerships to keep their customers satisfied. With issues such as supply chain delays, digital transformation and online compention, and inefficient dealership processes. To combat these issues our dashboard was created to help dealerships organize their inventory and stay on top of the stock of each of the vehicles, in turn allowing for more efficient processes, increases in the supply chain, and adapting to the digital transformation. 
-![project 3](https://github.com/user-attachments/assets/0c102a80-1692-4eef-bcae-6551f32ee003)
+![image](https://github.com/user-attachments/assets/ca1045a2-c0e1-4a09-b4a4-fd3519ea39f4)
+
 
 **Dataset used:**
 
