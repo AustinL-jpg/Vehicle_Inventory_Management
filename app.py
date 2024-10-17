@@ -1,37 +1,21 @@
 #from MongoDB import mongodb
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import pandas as pd
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 import json
 
 app = Flask(__name__)
-#pp.config["MONGO_URI"] = "mongodb://localhost:27017/car_inventory_db"
+
 
 client = MongoClient('localhost', 27017)
 
 db = client.car_inventory_db
 
-#mongo = PyMongo(app)
-# data = file_path = 'columns.csv'  
-# df = pd.read_csv(file_path, low_memory=False)
-
-
-# Load dataset
-# data = pd.read_json('all_vehicles.json')  
-#app.config ["Mongo_uri"]
 
 @app.route('/')
 def home():
    return render_template('index.html')
-# if __name__ == '__main__':
-#    app.run()
-# @app.route("/")
-# def home_page():
-#     inventory_data = mongo.db.car.find()
-#     return render_template("index.html")
-# ,
-        #  inventory = inventory_data)
 
 
 
@@ -42,62 +26,53 @@ def get_data():
     fields = {'_id': 0, 'make': 1, 'model': 1,  'year': 1}
     inventory_data = db.car_inventory.find(query, fields)
     #print(inventory_data)
-    data_list = [item for item in inventory_data]
-    print(data_list)
+    cars_data = [item for item in inventory_data]
+    print(cars_data)
 
   
-
-    return jsonify(data_list)
-
-
-# @app.route('/api/data', methods=['POST'])
-# def update_dashboard():
-#     choice = request.form.get('select')
-#     # Do something with the choice (e.g., update database, render a different template)
-#     return jsonify({'message': 'Dashboard updated successfully'})
-
-# @app.route(f'/api/data{Ford}')
-# def get_data():
-#     # Convert DataFrame to JSON
-#     query = {'make': {Ford}}
-#     fields = {'model': 1,  'year': 1}
-#     inventory_data = db.car_inventory.find(query, fields)
-#     #print(inventory_data)
-#     data_list = [item for item in inventory_data]
-#     print(data_list)
-
-  
-
-#     return jsonify(data_list)
+    
+    return jsonify(cars_data)
 
 
-# @app.route(f'/api/data{model}')
-# def get_data():
-#     # Convert DataFrame to JSON
-#     query = {'make': {model}}
-#     fields = {'year': 1}
-#     inventory_data = db.car_inventory.find(query, fields)
-#     #print(inventory_data)
-#     data_list = [item for item in inventory_data]
-#     print(data_list)
+@app.route(f'/query')
+def query():
 
-  
 
-#     return jsonify(data_list)
 
-# @app.route(f'/api/data{year}')
-# def get_data():
-#     # Convert DataFrame to JSON
-#     query = {'make': {year}}
-#     fields = {}
-#     inventory_data = db.car_inventory.find(query, fields)
-#     #print(inventory_data)
-#     data_list = [item for item in inventory_data]
-#     print(data_list)
+    print("You made it this far.")
 
-  
 
-#     return jsonify(data_list)
+    make = request.args.get('make')
+    model = request.args.get('model')
+    year = request.args.get('year')
+    print(make, model, year)
+
+    query = {}
+    if make:
+        query['make'] = make
+    if model:
+        query['model'] = model
+    if year:
+        try:
+            query['year'] = int(year)
+
+        except ValueError:
+            print(f"Invalid year value: {year}")
+
+
+    print(f"Query received - Make: {make}, Model: {model}, Year: {year}")
+
+    if not query:
+        return jsonify([]), 400
+    
+    fields = {'_id': 0}
+    inventory_data = db.car_inventory.find(query, fields)
+    #print(inventory_data)
+    cars_data = [item for item in inventory_data]
+    print(cars_data)
+
+    return jsonify(cars_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

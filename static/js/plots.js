@@ -18,7 +18,7 @@ d3.json("api/data").then((importedData) => {
   function createDropdown(carData, key) {
     const uniqueValues = new Set();
     const firstDropdown = document.createElement('select');
-    const secondDropdown = document.getElementById("secondDropdown");
+    const secondDropdown = document.createElement("select");
 
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
@@ -38,34 +38,46 @@ d3.json("api/data").then((importedData) => {
         option.text = item.make;
         firstDropdown.appendChild(option);
       }
+
+    firstDropdown.addEventListener('change', populateSecondDropdown);
+
     });
 
     return firstDropdown;
 
+
+    
+    // Add an event listener to the first dropdown to trigger population
+    function populateSecondDropdown() {
+      const selectedValue = firstDropdown.value;
+      const carModel = carData[selectedValue];
+    
+      // Clear the existing options in the second dropdown
+      secondDropdown.innerHTML = '';
+    
+
+      // Add new options based on the selected value
+      carData.forEach(item=> {
+        const optionElement = document.createElement('option');
+        optionElement.value = item;
+        optionElement.text = item;
+        secondDropdown.appendChild(optionElement);
+
+      });
+
+
+    
+    }
+
   }
 
-const dropdown = createDropdown(carData);
-document.body.appendChild(dropdown);
+  const dropdown = createDropdown(carData);
+  document.body.appendChild(dropdown);
+
+
 
 // Function to populate the second dropdown
-function populateSecondDropdown() {
-  const selectedValue = firstDropdown.value;
-  const options = data[selectedValue];
 
-  // Clear the existing options in the second dropdown
-  secondDropdown.innerHTML = '';
-
-  // Add new options based on the selected value
-  options.forEach(option => {
-    const optionElement = document.createElement('option');
-    optionElement.value = option;
-    optionElement.text = option;
-    secondDropdown.appendChild(optionElement);
-  });
-}
-
-// Add an event listener to the first dropdown to trigger population
-firstDropdown.addEventListener('change', populateSecondDropdown);
 })
 
 

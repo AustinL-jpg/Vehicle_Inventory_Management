@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car Miles</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Car Selection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery first -->
+    <script src="static/js/dropdown.js"></script> <!-- Link to your JavaScript file -->
 </head>
+
 <body>
     
     <div class="container">
@@ -18,50 +19,33 @@
           </div>
         </div>
         <br>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card card-body bg-light">
-              <h6>Make:</h6>
-              <select id="carMake">
-                <option value="">Choice of Make</option>
-                <option value="Make">Make</option>
-              </select>
-              <select id="carModel">
-                <option value="">Choice of Model</option>
-                <option value="Model">Model</option>
-              </select>
-              <select id="carYear">
-                <option value="">Choice of year</option>
-                <option value="Year">Year</option>
-              </select>
-            </div>
-            <br>
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4 class="card-title">Demographic Info</h4>
-              </div>
-              <div id="select" class="card-body"></div>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div id="bar"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="bubble"></div>
-          </div>
+
+        <div id="select">
+          <label for="make">Make:</label>
+          <select id="make">
+              <option value="">Select Make</option>
+          </select>
+  
+          <label for="model">Model:</label>
+          <select id="model" disabled>
+              <option value="">Select Model</option>
+          </select>
+  
+          <label for="year">Year:</label>
+          <select id="year" disabled>
+              <option value="">Select Year</option>
+          </select>
+          
+          <button id="query-button" class="btn btn-primary mt-3">Query Car</button>
+
+  
+      <!-- Results Container -->
+        <div id="results" class="mt-4 p-3 border rounded bg-light">
         </div>
       </div>
-
-    <h1>TEEST HELLO</h1>
     
-    <div id="plot"></div>
-    <script src="static/js/plots.js"></script>
-
-
-
-
+    <!-- <div id="plot"></div> -->
+    <script src="static/js/dropdown.js"></script>
 
 </body>
 </html>
