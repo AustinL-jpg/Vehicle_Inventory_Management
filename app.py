@@ -75,12 +75,7 @@ def query():
     else:
         fields_dict = {"_id": 0}  # Exclude _id, query all other fields
 
-    # cars = inventory_data(make, model, year, fields_dict)  # Adjust your DB query accordingly
-    # fields = {"_id": 0, "make": 1}
-    # inventory_data = db.car_inventory.find(query, fields_dict)
-    # # print(inventory_data)
-    # cars_data = [item for item in inventory_data]
-    # print(cars_data)
+
     inventory_data = db.car_inventory.find(query, fields_dict)
     cars_data = []
 
