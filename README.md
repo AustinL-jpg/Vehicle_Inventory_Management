@@ -6,8 +6,9 @@ The new age of technology is here and with the increase in demand for the used a
 
 Dataset used: 
 
-Opendatasoft All Vehicle Models
-Mock Data (Created by us to fill in necessary informaton) 
+  - Opendatasoft All Vehicle Models
+
+  - Mock Data (Created by us to fill in necessary informaton) 
 
 Process:
 
