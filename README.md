@@ -25,7 +25,9 @@ There were 3 main resources we used to develop our dashboard to make it function
 
 **Interactive dropdowns for user selection**
 
-Three dropdowns are in place where users can select the Make, Model, and year for each vehicle in their inventory. 
+Three dropdowns:
+
+In place where users can select the Make, Model, and year for each vehicle in their inventory. 
 Additionally once the make is selected the dropdowns will automatically filter to only show the models made by that manufacturer and only the years that are available. 
 ![project 3](https://github.com/user-attachments/assets/427dce21-4625-4e53-a9d8-c84f46d43c3b)
 
@@ -33,10 +35,14 @@ Additionally once the make is selected the dropdowns will automatically filter t
 
 With the selection of make, model, and year the graphs will change showing the current model vs. the current inventory, make vs percentage of inventory, 
 
-Line graph showing how the mpg has changed over the years based on the make, model, and year will display. 
+Line graph:
+
+Showing how the mpg has changed over the years based on the make, model, and year will display. 
 ![proejct 3 graph](https://github.com/user-attachments/assets/c1a26433-843e-4d3e-8ba7-f4c85d4d530d)
 
-Pie chart showing the stock of used vs new vehicles in the inventory. 
+Pie chart:
+
+Showing the stock of used vs new vehicles in the inventory. 
 ![image](https://github.com/user-attachments/assets/7e3cc0ee-83e0-4f9e-af6d-567f56ff709b)
 
 **Vehicle Information**
