@@ -10,7 +10,7 @@ Dataset used:
 
   - Mock Data (Created by us to fill in necessary informaton) 
 
-Process:
+# Process:
 
 There were 3 main resources we used to develop our dashboard to make it function. From creating data to forming visualizations.
   1. Creating mock data in python using pandas and vscode.
@@ -25,7 +25,7 @@ Dashboard Features:
 Interactive dropdowns for user selection. 
 Three dropdowns are in place where users can select the Make, Model, and year for each vehicle in their inventory. 
 
-Dynamic Graphs. 
+# Dynamic Graphs. 
 With the selection of make, model, and year the graphs will change showing the current model vs. the current inventory, make vs percentage of inventory, 
 
 Instructions for use: 
@@ -37,7 +37,7 @@ This dashboard is only functional when hosted localy on a computer using the fla
   4. With live server open the HTML from vscode, or after running the flask locate the server link and copy it into a browser.
   5. With the dashboard up the dropdown menus will be active and the graphs will be dynamicly changing with the selected vehicle.
 
-Features for Future Updates.
+# Features for Future Updates.
 
   - Addition of prices to show the estimated sales prices for each vehicle. 
   - API for images of each vehicle so when the user selects a make model and year it shows a picture along with the information about the car. 
