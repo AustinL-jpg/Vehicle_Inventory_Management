@@ -14,7 +14,7 @@ The new age of technology is here and with the increase in demand for the used a
 
 # Process:
 
-There were 3 main resources we used to develop our dashboard to make it function. From creating data to forming visualizations.
+There were many resources we used to develop our dashboard to make it function. From creating data to forming visualizations.
   1. Creating mock data in python using pandas and vscode.
   2. Cleaning our main dataset in python using pandas.
   3. Database creation using pymongo and mongodb.
