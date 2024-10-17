@@ -1,0 +1,93 @@
+body {
+    background-color: #001e38; /* Change this to your desired color */
+    color: #ffffff; /* Optional: Change text color for contrast */
+}
+
+
+.dashboard-container {
+    background-color: #000000;
+    border: 1px solid #fffb00;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgb(0, 255, 42);
+}
+
+.dashboard-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dashboard-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+info-box {
+    background-color: #000000;
+    border: 1px solid #fffb00;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgb(0, 255, 42); /* Subtle shadow */
+}
+
+.fl-table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.fl-table th, .fl-table td {
+    border: 1px solid #eeff00; /* Cell border */
+    padding: 8px; /* Padding for cells */
+}
+
+.fl-table th {
+    background-color: #5f1919; /* Header background color */
+    text-align: left; /* Align text to the left */
+}
+.canvas-container {
+    background-color: #000000;
+    border: 1px solid #fffb00;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgb(0, 255, 42);
+}
+
+.canvas-container canvas {
+    display: block;
+    max-width: 100%; /* Responsive design */
+    height: auto;    /* Maintain aspect ratio */
+}
