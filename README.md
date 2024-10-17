@@ -20,7 +20,7 @@ There were 3 main resources we used to develop our dashboard to make it function
   5. Bootstrap for html and css to style and create a base model for our dashboard.
   6. Javascript plotly and d3 for interactive visualizations in the dashboard.
 
-Dashboard Features: 
+# Dashboard Features: 
 
 Interactive dropdowns for user selection. 
 Three dropdowns are in place where users can select the Make, Model, and year for each vehicle in their inventory. 
@@ -28,14 +28,18 @@ Three dropdowns are in place where users can select the Make, Model, and year fo
 # Dynamic Graphs. 
 With the selection of make, model, and year the graphs will change showing the current model vs. the current inventory, make vs percentage of inventory, 
 
-Instructions for use: 
+# Instructions for use: 
 
 This dashboard is only functional when hosted localy on a computer using the flask app. In order to run the dashboard you must: 
+
   1. Clone the repository to your device.
-  2. Find the app.py file.
-  3. Run the app.py file in your terminal.
-  4. With live server open the HTML from vscode, or after running the flask locate the server link and copy it into a browser.
-  5. With the dashboard up the dropdown menus will be active and the graphs will be dynamicly changing with the selected vehicle.
+  2. Find the monogodb python file.
+  3. Run the code to create the database.
+  4. Open mongo compass to confirm it has been created.
+  5. Find the app.py file.
+  6. Run the app.py file in your terminal.
+  7. With live server open the HTML from vscode, or after running the flask locate the server link and copy it into a browser.
+  8. With the dashboard up the dropdown menus will be active and the graphs will be dynamicly changing with the selected vehicle.
 
 # Features for Future Updates.
 
