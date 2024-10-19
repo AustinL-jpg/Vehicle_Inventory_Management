@@ -9,6 +9,9 @@ $(document).ready(function() {
     $.getJSON("/api/data", function(data) {
         cars = data;
         const makes = [...new Set(cars.map(car => car.Make))];
+
+        $('#make').empty().append('<option value="">Select Make</option>');
+
         makes.forEach(make => {
             $('#make').append(`<option value="${make}">${make}</option>`);
         });
@@ -58,30 +61,32 @@ $(document).ready(function() {
             data: {
                 labels: uniqueYears,
                 datasets: [
-                    {
+                    {   
                         label: 'Single Fuel Type City MPG',
                         data: cityMpgData,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(255, 0, 0, 1)',
+                        backgroundColor: 'rgba(255, 0, 0, 0.5)',
                         borderWidth: 1
                     },
                     {
                         label: 'Highway MPG',
                         data: highwayMpgData,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(0, 255, 0, 1)',
+                        backgroundColor: 'rgba(0, 255, 0, 0.5)',
                         borderWidth: 1
                     },
                     {
                         label: 'CO2 Emissions (Grams/Mile)',
                         data: co2Data,
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(0, 0, 255, 1)',
+                        backgroundColor: 'rgba(0, 0, 255, 0.5)',
                         borderWidth: 1
                     }
                 ]
             },
             options: {
+                responsive: true,
+                maintainAspectratio: false,
                 scales: {
                     y: {
                         beginAtZero: true
@@ -102,7 +107,7 @@ $(document).ready(function() {
                 labels: ['Used Vehicles', 'New Vehicles'],
                 datasets: [{
                     data: [usedCount, newCount],
-                    backgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                    backgroundColor: ['rgba(0, 0, 255, 1)', 'rgba(255, 0, 0, 1)'],
                     borderWidth: 1
                 }]
             },
@@ -145,6 +150,8 @@ $(document).ready(function() {
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectratio: false,
                 scales: {
                     y: {
                         beginAtZero: true
@@ -157,14 +164,14 @@ $(document).ready(function() {
     $('#query-button').off('click').on('click', function(e) {
         e.preventDefault();
         if (isQuerying) return;
-    
+
         const selectedMake = $('#make').val();
         const selectedModel = $('#model').val();
         const selectedYear = $('#year').val(); // Keep the selected year for filtering
-    
+        console.log(selectedMake, selectedModel, selectedYear)
         if (selectedMake && selectedModel && selectedYear) {
             isQuerying = true;
-    
+
             // Create the dashboard container dynamically
             const dashboardContainer = `
                 <div id="dashboard-container" class="dashboard-container">
@@ -183,10 +190,10 @@ $(document).ready(function() {
                     </div>
                 </div>
             `;
-    
+
             // Append the dashboard container to the results area
             $('#results').empty().append(dashboardContainer); // Clear previous results
-    
+
             // Fetch data for charts after dashboard is appended
             $.get('/query', { Make: selectedMake, Model: selectedModel }, function(data) {
                 const years = [];
@@ -194,7 +201,7 @@ $(document).ready(function() {
                 const highwayMPG = [];
                 const co2Data = [];
                 const stockData = [];
-    
+
                 data.forEach(car => {
                     if (car.Year) {
                         years.push(car.Year);
@@ -204,13 +211,13 @@ $(document).ready(function() {
                         if (car['Highway MPG for Single Fuel Type Vehicles']) {
                             highwayMPG.push(car['Highway MPG for Single Fuel Type Vehicles']);
                         }
-                        if (car['CO2 SIngle Fuel type tailpipe Grams/mile']) {
-                            co2Data.push(car['CO2 SIngle Fuel type tailpipe Grams/mile']);
+                        if (car['CO2 Single Fuel type tailpipe Grams/mile']) {
+                            co2Data.push(car['CO2 Single Fuel type tailpipe Grams/mile']);
                         }
                         stockData.push(car);
                     }
                 });
-    
+
                 // Create unique years for the line chart
                 const uniqueYears = [...new Set(years)].sort((a, b) => a - b);
                 const cityMpgData = uniqueYears.map(year => {
@@ -225,62 +232,130 @@ $(document).ready(function() {
                     const index = years.indexOf(year);
                     return index !== -1 ? co2Data[index] : null;
                 });
-    
+
                 // Create the charts
                 createChart(uniqueYears, cityMpgData, highwayMpgData, co2DataForYears);
                 createBarChart(stockData);
-    
+
                 // Count used and new vehicles for the selected year only
                 const filteredData = stockData.filter(car => car.Year === Number(selectedYear));
                 const usedCount = filteredData.filter(car => car.Condition === 'Used').length;
                 const newCount = filteredData.filter(car => car.Condition === 'New').length;
                 createPieChart(usedCount, newCount);
-    
-                $('#results').append('<h2>Vehicle Information</h2>');
+
+                
                 const vehicleCount = filteredData.length;
-    
-                if (vehicleCount > 0) {
-                    $('#results').append(`<div>Total Vehicles Found: ${vehicleCount}</div>`);
-                } else {
-                    $('#results').append('<div>No results found for the selected year.</div>');
-                }
-    
-                filteredData.forEach(car => {
+                $('#results').append(`
+                    <div class="info-box">
+                        <h2>Vehicle Information</h2>
+                        <div class="total-vehicles">Total Vehicles Found: ${vehicleCount}</div>
+                    </div>
+                `);
+                console.log(vehicleCount)
+
+                // if (vehicleCount > 0) {
+                //     $('#results').append(`<div>Total Vehicles Found: ${vehicleCount}</div>`);
+                // } else {
+                //     $('#results').append('<div>No results found for the selected year.</div>');
+                // }
+                // $('#results').append('</div>');
+
+                // Iterate through the filtered data in pairs
+                for (let i = 0; i < filteredData.length; i += 2) {
+                    let firstCar = filteredData[i];
+                    let secondCar = filteredData[i + 1]; // Get the next car if it exists
+                    console.log(filteredData)
+                    console.log(firstCar)
+                    console.log(secondCar)
+                    // Construct the table
                     let table = `
                         <div class="info-box">
                             <table class="fl-table">
                                 <thead>
                                     <tr>
-                                        <th>Attribute</th>
-                                        <th>Value</th>
+                                        <th>Details: ${firstCar.Make} - ${firstCar.Model} - VIN: ${firstCar.VIN}</th>
+                                        <th>${secondCar ? 
+                                            `Details: ${secondCar.Make} - ${secondCar.Model} - VIN: ${secondCar.VIN}` : 
+                                            ''
+                                        }</th>
                                     </tr>
                                 </thead>
-                                <tbody>`;
-                    const prioritizedKeys = ['Make', 'Model', 'Year', 'VIN', 'Mileage', 'Stock', 'Condition', 'Single Fuel Type city MPG', 'Type of Engine', 'Transmission Type', 'Amount Spent over the next 5 Years compared to Average Vehicle',
-                        'Annual Fuel cost for Single Fuel Type Vehicles'
-                    ];
-    
-                    prioritizedKeys.forEach(key => {
-                        const value = car[key];
-                        if (value !== undefined && !(value === 0 || value === -1 || value === '0' || value === '-1')) {
-                            table += `<tr><td>${key}</td><td>${value}</td></tr>`;
-                        }
-                    });
-    
-                    for (const [key, value] of Object.entries(car)) {
-                        if (!prioritizedKeys.includes(key) && !(value === 0 || value === -1 || value === '0' || value === '-1')) {
-                            table += `<tr><td>${key}</td><td>${value}</td></tr>`;
-                        }
-                    }
-    
-                    table += `</tbody></table></div>`;
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table>
+                                                ${getCarDetails(firstCar)} <!-- First car details -->
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                ${secondCar ? getCarDetails(secondCar) : '<tr></tr>'} <!-- Second car details or empty if none -->
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>`;
+
                     $('#results').append(table);
-                });
+                }
+
             }).fail(function() {
                 $('#results').empty().append('<div>Error fetching results.</div>');
             }).always(function() {
                 isQuerying = false;
             });
         }
-    });
-})   
+    
+
+    // Helper function to get car details
+    function getCarDetails(car) {
+        let html = '';
+        const keys = Object.keys(car);
+        
+        // Define prioritized keys
+        const prioritizedKeys = ['Make', 'Model', 'Year', 'Condition', 'Mileage', 'VIN']; // Add your prioritized keys here
+    
+        // Log the car object to verify its structure
+        console.log("Car Object:", car);
+    
+        // Process prioritized keys first
+        prioritizedKeys.forEach(key => {
+            if (keys.includes(key)) {
+                const value = car[key];
+                console.log(`Processing Priority Key: ${key} = ${value}`); // Log for debugging
+                if (value !== undefined && value !== '' && !(value === 0 || value === -1 || value === '0' || value === '-1')) {
+                    html += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                }
+            }
+        });
+    
+        // Now process the remaining keys that are not prioritized
+        keys.forEach(key => {
+            if (!prioritizedKeys.includes(key)) {
+                const value = car[key];
+                console.log(`Processing: ${key} = ${value}`); // Log for debugging
+                if (value !== undefined && value !== '' && !(value === 0 || value === -1 || value === '0' || value === '-1')) {
+                    html += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                }
+            }
+        });
+    
+        // Log the final HTML to verify the output
+        console.log("Generated HTML:", html);
+    
+        return html; // Ensure you return the generated HTML
+    }
+        }
+        )
+    })
+
+        //  }).fail(function() {
+        //         $('#results').empty().append('<div>Error fetching results.</div>');
+        //     }).always(function() {
+        //         isQuerying = false;
+        //     });
+
+        // }
+    // })
+// })

@@ -36,19 +36,13 @@ def get_data():
 
 @app.route(f'/query')
 def query():
-
-
-
     print("You made it this far.")
-
-
+    
     Make = request.args.get('Make')
     Model = request.args.get('Model')
     Year = request.args.get('Year')
     fields = request.args.get('')
     print(Make, Model, Year)
-
-    
 
     query = {}
     if Make:
@@ -58,10 +52,8 @@ def query():
     if Year:
         try:
             query['Year'] = int(Year)
-
         except ValueError:
             print(f"Invalid year value: {Year}")
-
 
     print(f"Query received - Make: {Make}, Model: {Model}, Year: {Year}")
 
@@ -75,7 +67,6 @@ def query():
     else:
         fields_dict = {"_id": 0}  # Exclude _id, query all other fields
 
-
     inventory_data = db.car_inventory.find(query, fields_dict)
     cars_data = []
 
@@ -83,19 +74,16 @@ def query():
         # Create a new dictionary to hold filtered data
         filtered_item = {}
         for key, value in item.items():
-            if value != 0 or value != -1:  # Filter out values of 0 and -1
+            if value not in [0, -1, "0", "-1"]:  # Filter out values of 0 and -1
                 filtered_item[key] = value
-                print("works one")  
-            if value != "0" or value != "-1":  # Filter out values of 0 and -1
-                filtered_item[key] = value  
-                print("works two")  
+        
         if filtered_item:  # Only add non-empty items
             cars_data.append(filtered_item)
-        print(filtered_item)    
-
+    
     if not cars_data:
         return jsonify({"message": "No results found."}), 404
 
+    # Now, return a response that includes two sets of data per display box
     return jsonify(cars_data)
 
 

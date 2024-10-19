@@ -1,5 +1,5 @@
 body {
-    background-color: #001e38; /* Change this to your desired color */
+    background-color: #001222; /* Change this to your desired color */
     color: #ffffff; /* Optional: Change text color for contrast */
 }
 
@@ -10,57 +10,145 @@ body {
     padding: 20px;
     margin: 20px;
     box-shadow: 0 2px 10px rgb(251, 255, 0);
+    height: flex;
 }
 
 .dashboard-container h1 {
     font-size: 24px;
     margin-bottom: 10px;
+    width: auto; /* Set a fixed width or use 100% for full responsiveness */
+    height: auto;
 }
-
-.dashboard-container p {
-    font-size: 16px;
-    margin-bottom: 20px;
+.dashboard-container {
+    display: flex;
+    flex-direction: column; /* Keep the title and description in a column */
+    align-items: center; /* Center the content horizontally */
+    margin-right: 10px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    width: 100%; /* Allow the width to expand based on content */
+    min-width: 400px; /* Set a minimum width */
+    max-width: 100%; /* Prevent it from exceeding the container */
+    padding: 8px; /* Padding for better appearance */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 20px; /* Rounded corners */
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    margin-right: 10px; /* Space between the label and select */
 }
 
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: auto; /* Make the select take the full width of the parent */
+    padding: 8px; /* Padding for better appearance */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    flex-wrap: nowrap;
 }
 
 button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-left: 10px; /* Space between the button and last select */
+    padding: 8px 15px; /* Padding for the button */
+    flex-wrap: nowrap;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+#charts-container {
+    display: flex;
+    flex-direction: column; /* Stack charts vertically */
+    height: 100%; /* Fill the entire height of the dashboard */
+}
+
+#line-chart-container {
+    flex: 1; /* Allow the line chart to take up the upper half */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center align horizontally */
+    width: auto;
+    padding: 8px;
+}
+
+#line-chart-container canvas {
+    width: 100%; /* Full width of the line chart container */
+    height: 50%; /* Full height of the line chart container */
+    max-height: flex; /* Ensure it has a max height */
+    width: auto;
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding is included in width */
+
+}
+
+#lower-charts-container {
+    display: flex; /* Flexbox for lower half */
+    flex: 1; /* Lower half takes up remaining space */
+    width: auto;
+}
+
+.half-chart {
+    flex: 1; /* Each half takes up equal space */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center align horizontally */
+    aspect-ratio: auto; /* Keep the aspect ratio square for pie/bar charts */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    width: 100%;
+    padding: 8px;
+}
+
+.half-chart canvas {
+    width: 100%; /* Full width of each half-chart */
+    height: 100%; /* Full height of each half-chart */
+}
+
+canvas {
+    max-width: 100%; /* Ensure charts are responsive */
+    height: auto; /* Maintain aspect ratio of charts */
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 100%; /* Allow full width on smaller screens */
+        height: 1000px; /* Allow height to adjust */
+    }
+    
+    #lower-charts-container {
+        flex-direction: column; /* Stack charts vertically on small screens */
+    }
+
+    .half-chart {
+        height: 300px; /* Set a fixed height for pie and bar charts */
+    }
+}
 .info-box {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; 
     background-color: #000000;
     border: 1px solid #fffb00;
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
+    text-align: center;
     box-shadow: 0 2px 10px rgb(251, 255, 0); /* Subtle shadow */
+    width: auto; /* Full width to match container */
 }
+.info-box h2 {
+    font-size: 20px; /* Font size for the heading */
+    margin-bottom: 10px; /* Space below the heading */
 
+}
+.total-vehicles {
+    font-size: 16px; /* Adjust font size as needed */
+    margin-top: 5px; /* Space above the total count */
+
+}
 .fl-table {
     width: 100%; /* Full width table */
     border-collapse: collapse; /* Collapse borders */
@@ -75,41 +163,22 @@ button:hover {
     background-color: #5f1919; /* Header background color */
     text-align: left; /* Align text to the left */
 }
-
-.canvas-container {
-    background-color: #000000;
-    border: 1px solid #fffb00;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0 2px 10px rgb(251, 255, 0);
+#vehicle-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-#charts-container {
-    display: flex;
-    flex-direction: column;
-    height: 800px; /* Set a fixed height for the container */
-    gap: 10px; /* Space between charts */
+#details-table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
 }
 
-#line-chart-container canvas {
-    height:100px; /* Adjusted height for the line chart */
-    width: 100%;   /* Ensure it remains full width */
+#details-table th, #details-table td {
+    border: 1px solid #eeff00; /* Cell border */
+    padding: 8px; /* Padding for cells */
 }
 
-#lower-charts-container {
-    display: flex;
-    flex: 1; /* Lower half */
-}
-
-.half-chart {
-    flex: 1; /* Each half takes up equal space */
-    display: flex;
-    align-items: center; /* Center align charts vertically */
-    justify-content: center; /* Center align charts horizontally */
-}
-
-canvas {
-    max-width: 100%; /* Ensure charts are responsive */
-    height: 300px; /* Set a fixed height for bar and pie charts */
+#details-table th {
+    background-color: #5f1919; /* Header background color */
+    text-align: left; /* Align text to the left */
 }
